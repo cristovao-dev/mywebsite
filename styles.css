@@ -147,10 +147,21 @@ h3 {
 }
 
 .hero-text,
+.hero-subline,
 .intro-text {
   max-width: 720px;
   color: var(--muted);
   font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.hero-subline {
+  margin: 22px 0 0;
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+.hero-text {
+  margin-top: 18px;
 }
 
 .hero-actions,
@@ -230,6 +241,41 @@ h3 {
 .section {
   padding: clamp(56px, 9vw, 100px) 0;
   border-top: 1px solid var(--line);
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0 0 clamp(56px, 8vw, 86px);
+}
+
+.highlight-card {
+  min-height: 110px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.14), rgba(23, 35, 49, 0.82));
+}
+
+.highlight-value,
+.highlight-label {
+  display: block;
+}
+
+.highlight-value {
+  color: var(--text);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.12;
+}
+
+.highlight-label {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .section-heading {
@@ -350,11 +396,12 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.34fr);
   gap: 18px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .credential-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .subheading {
@@ -365,6 +412,14 @@ h3 {
   display: grid;
   align-content: start;
   gap: 10px;
+}
+
+.credential-grid .credential-card {
+  grid-template-rows: 28px minmax(58px, auto) minmax(44px, auto) 1fr;
+}
+
+.credential-grid .credential-card .tag {
+  width: max-content;
 }
 
 .credential-card p {
@@ -378,6 +433,7 @@ h3 {
 .side-stack {
   display: grid;
   gap: 16px;
+  padding-top: calc(1.12rem * 1.25 + 16px);
 }
 
 .skill-card ul {
@@ -465,6 +521,13 @@ h3 {
   gap: 12px;
 }
 
+.repo-proof {
+  margin-top: 0;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
 .repo-card h3 a {
   text-decoration-color: rgba(15, 118, 110, 0.35);
   text-decoration-thickness: 2px;
@@ -542,7 +605,8 @@ h3 {
   .skills-grid,
   .repo-grid,
   .credential-grid,
-  .private-preview-grid {
+  .private-preview-grid,
+  .highlights {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -552,6 +616,10 @@ h3 {
 
   .credentials-layout {
     grid-template-columns: 1fr;
+  }
+
+  .side-stack {
+    padding-top: 0;
   }
 }
 
@@ -575,7 +643,8 @@ h3 {
   .skills-grid,
   .repo-grid,
   .credential-grid,
-  .private-preview-grid {
+  .private-preview-grid,
+  .highlights {
     grid-template-columns: 1fr;
   }
 

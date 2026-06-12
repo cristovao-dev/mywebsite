@@ -11,6 +11,7 @@ const featuredFallback = [
     name: "mywebsite-vibecoded",
     html_url: "https://github.com/cristovao-dev/mywebsite-vibecoded",
     description: "This GitHub Pages portfolio site.",
+    proof: "What it shows: HTML, CSS, JavaScript, GitHub Pages deployment.",
     language: "HTML",
     stargazers_count: 0,
     topics: ["portfolio", "github-pages"],
@@ -22,7 +23,8 @@ const privateAppPreviews = [
   {
     name: "web-fpsgame",
     html_url: "",
-    description: "A private JavaScript first-person game experiment.",
+    description: "A private first-person game experiment built to explore browser-based interaction and game logic.",
+    proof: "What it shows: JavaScript, interaction design, canvas-style thinking, rapid prototyping.",
     language: "JavaScript",
     stargazers_count: 0,
     topics: ["private", "javascript", "game"],
@@ -32,7 +34,8 @@ const privateAppPreviews = [
   {
     name: "comicbook-app",
     html_url: "",
-    description: "A vibe-coded comic book app.",
+    description: "A vibe-coded comic book app for experimenting with structured content and interactive reading flows.",
+    proof: "What it shows: TypeScript, component thinking, UI state, app organization.",
     language: "TypeScript",
     stargazers_count: 0,
     topics: ["private", "typescript", "app"],
@@ -42,7 +45,8 @@ const privateAppPreviews = [
   {
     name: "financesapp-vibecoded",
     html_url: "",
-    description: "A private vibe-coded finances app.",
+    description: "A private finance tracking app focused on personal finance workflows and clear UI logic.",
+    proof: "What it shows: JavaScript, personal finance workflow, UI logic, data handling.",
     language: "JavaScript",
     stargazers_count: 0,
     topics: ["private", "javascript", "finance"],
@@ -53,6 +57,7 @@ const privateAppPreviews = [
     name: "mywebsite-vibecoded",
     html_url: "https://github.com/cristovao-dev/mywebsite-vibecoded",
     description: "This portfolio site for skills, experience, certifications, and app previews.",
+    proof: "What it shows: static site delivery, recruiter-focused content, responsive layout.",
     language: "HTML",
     stargazers_count: 0,
     topics: ["private", "html", "github-pages"],
@@ -62,7 +67,8 @@ const privateAppPreviews = [
   {
     name: "chatapp-vibecoded",
     html_url: "",
-    description: "Chat app to talk with AI, via API linking if necessary, with desktop and web versions.",
+    description: "Chat app to talk with AI through API linking if needed, with desktop and web versions.",
+    proof: "What it shows: Python, AI chat experimentation, API integration thinking, desktop/web workflows.",
     language: "Python",
     stargazers_count: 0,
     topics: ["private", "python", "ai", "chat"],
@@ -72,7 +78,8 @@ const privateAppPreviews = [
   {
     name: "notetaking-vibecoded",
     html_url: "",
-    description: "A private note-taking app experiment.",
+    description: "A private note-taking app experiment for organizing information and capturing useful notes quickly.",
+    proof: "What it shows: JavaScript, note-taking workflow, interface structure, productivity tooling.",
     language: "JavaScript",
     stargazers_count: 0,
     topics: ["private", "javascript", "notes"],
@@ -82,7 +89,8 @@ const privateAppPreviews = [
   {
     name: "local-ai-transcriptor",
     html_url: "",
-    description: "A local AI transcription project.",
+    description: "A local AI transcription project focused on privacy-aware speech-to-text experimentation.",
+    proof: "What it shows: Python, local transcription, privacy-first experimentation, AI tooling.",
     language: "Python",
     stargazers_count: 0,
     topics: ["private", "python", "ai", "transcription"],
@@ -92,7 +100,8 @@ const privateAppPreviews = [
   {
     name: "chatapp-playground",
     html_url: "",
-    description: "A playground app to learn how to code with AI and a local LLM.",
+    description: "A playground app for learning how to code with AI assistance and local LLM workflows.",
+    proof: "What it shows: Python, local LLM usage, prompt iteration, learning-by-building.",
     language: "Python",
     stargazers_count: 0,
     topics: ["private", "python", "ai", "local-llm"],
@@ -102,7 +111,8 @@ const privateAppPreviews = [
   {
     name: "noteapp-playground",
     html_url: "",
-    description: "Learning how simple local AI apps work by developing small applications with different approaches.",
+    description: "A simple local AI app playground for comparing approaches to notes and small workflows.",
+    proof: "What it shows: Python, local AI app structure, note workflows, experimentation.",
     language: "Python",
     stargazers_count: 0,
     topics: ["private", "python", "ai", "notes"],
@@ -118,6 +128,7 @@ function normalizeRepo(repo) {
   return {
     ...repo,
     description: repo.description || "A small GitHub project by Cristovao Freitas.",
+    proof: repo.proof || "",
     language: repo.language || "Project",
     topics,
     visibility: repo.visibility || "Public"
@@ -163,6 +174,10 @@ function renderRepos(filter = "all") {
     const description = document.createElement("p");
     description.textContent = safeDescription;
 
+    const proof = document.createElement("p");
+    proof.className = "repo-proof";
+    proof.textContent = repo.proof || `What it shows: ${repo.language} project work and practical implementation.`;
+
     const meta = document.createElement("div");
     meta.className = "repo-meta";
 
@@ -186,7 +201,7 @@ function renderRepos(filter = "all") {
       meta.append(homepage);
     }
 
-    card.append(title, description, meta);
+    card.append(title, description, proof, meta);
     repoGrid.append(card);
   });
 }
